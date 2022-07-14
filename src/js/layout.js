@@ -2,18 +2,26 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import Home from "./component/home";
+import About from "./component/about";
+import Contact from "./component/contact";
+import Pricing from "./component/pricing";
+import Faq from "./component/faq";
+import Blogpost from "./component/blog-post";
+import Bloghome from "./component/blog-home";
+import Portfolioview from "./component/portfolio-overview";
+import Portfolioitem from "./component/portfolio-item";
+
 
 //create your first component
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+	
 	const basename = process.env.BASENAME || "";
 
 	return (
@@ -22,15 +30,15 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
+					<Route exact path={"/home"} component={Home} />
+						<Route exact path={"/about"} component={About} />
+						<Route exact path={"/contact"} component={Contact} />
+						<Route exact path={"/pricing"} component={Pricing} />
+						<Route exact path={"/faq"} component={Faq} />
+						<Route exact path={"/blog-post"} component={Blogpost} />
+						<Route exact path={"/blog-home"} component={Bloghome} />
+						<Route exact path={"/portfolio-overview"} component={Portfolioview} />
+						<Route exact path={"/portfolio-item"} component={Portfolioitem} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
@@ -42,4 +50,4 @@ const Layout = () => {
 	);
 };
 
-export default injectContext(Layout);
+export default Layout;
